@@ -1,6 +1,7 @@
 <?php
 	$names=[];
 	$genders=[];
+	$users = [];
 ?>
 <!DOCTYPE html>
 <html>
@@ -82,22 +83,32 @@
 </html>
 
 <?php 
+$myusers = array();
 if (isset($_POST['save'])) {
-	$name = $_POST['first_name']." ".$_POST['second_name'];
+	$fullname = $_POST['first_name']." ".$_POST['second_name'];
 	$gender = $_POST['gender'];
+
+	//$users[$name]+=$gender;
 
 	//echo "$name<br>";
 	
 	//$names = $names+array($name);
-	$genders = $genders+array($gender);
+	//$genders = $genders+array($gender);
 
-	array_push($names, $name);
-	showUsers();
+	//array_push($names, $name);
+	//showUsers();
 	//echo count($names);
-	//var_dump($names);
+	//var_dump($users);
+	addUsers($fullname);
 
 
 	
+}
+
+function addUsers($name){
+	global $myusers;
+	array_push($myusers, $name);
+	print_r($myusers);
 }
 
 function showUsers(){
